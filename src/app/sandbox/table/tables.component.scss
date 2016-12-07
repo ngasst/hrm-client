@@ -1,0 +1,67 @@
+$even: lighten(#b0c4de, 30);
+$odd: lighten(#b0c4de, 20);
+table.table-list {
+    width: 100%;
+    thead {
+        tr {
+            background-color: lightsteelblue;
+            font-size: 14pt;
+            padding: 10px 0;
+            color: darken(lightsteelblue, 50);
+        }
+    }
+
+
+    tbody {
+        tr {
+            vertical-align: top;
+
+            td.table-highlight {
+                background-color: greenyellow;
+                color: #666;
+                font-weight: 800;
+            }
+
+            ul {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+                flex-flow: row wrap;
+                align-content: flex-start;
+                li {
+                    list-style-type: none;
+                    margin: 5px 5px;
+                    &:nth-child(odd) {
+                        background-color: $odd;
+                    }
+
+                    &:nth-child(even) {
+                        background-color: $even;
+                    }
+                }
+
+                li.field-highlight {
+                    background-color: deepskyblue;
+                    color: #666;
+                    font-weight: 800;
+                }
+            }
+
+            &:nth-child(odd) {
+                background-color: $odd;
+            }
+
+            &:nth-child(even) {
+                background-color: $even;
+            }
+
+        }
+
+    }
+
+    tfoot {
+
+    }
+}

@@ -1,0 +1,26 @@
+<div class="home">
+  <h4>Sandbox Tables <small>(displaying {{data?.length}} tables)</small></h4>
+  <div class="search-container">
+    <div class="search-table-name">
+      <label for="">Search By Table Name</label>
+      <input type="text" [formControl]="tn" #entn>
+    </div>
+    <div class="search-field-name">
+      <label for="">Search By Field Name</label>
+      <input type="text" [formControl]="fn" #enfn>
+    </div>
+    <div class="filter">
+        <input type="radio" [formControl]="sort" value="true" [checked]="sort.value === true"> <label>Alphabetic Order</label>
+        <input type="radio" [formControl]="sort" value="false" [checked]="sort.value === false"> <label>Most Rows</label>
+        <input type="checkbox" [formControl]="empty" value="true" [checked]="empty.value === true"> <label>Empty Tables</label>
+    </div>
+    <button #send>FILTER</button>
+  </div>
+  <div class="tables-container">
+    <div class="tables-header"></div>
+    <div class="tables-body">
+      <tables [data]="data" [highf]="highf" [hight]="hight"></tables>
+    </div>
+  </div>
+
+</div>
