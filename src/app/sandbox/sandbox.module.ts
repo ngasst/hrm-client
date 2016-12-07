@@ -1,19 +1,15 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SandboxComponent } from './sandbox.component';
-import { TablesComponent, FieldHighlightDirective, TableHighlightDirective} from './table';
+import { TablesComponent, TablesModule } from './table';
 import { SandboxRoutingModule } from './sandbox-routing.module';
 
 @NgModule({
   imports: [
     SandboxRoutingModule,
-    ReactiveFormsModule
+    TablesModule
   ],
   declarations: [
-    SandboxComponent,
-    TablesComponent,
-    TableHighlightDirective,
-    FieldHighlightDirective
   ]
 })
 export class SandboxModule { }

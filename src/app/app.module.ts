@@ -37,7 +37,7 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   imports: [ // import Angular's modules
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
     SandboxModule
@@ -45,6 +45,7 @@ type StoreType = {
   declarations: [
     AppComponent,
     UsageComponent,
+    SandboxComponent,
     NoContentComponent
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
