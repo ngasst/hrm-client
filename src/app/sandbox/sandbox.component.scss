@@ -20,25 +20,5 @@
         .filter {
             
         }
-
-        input {
-            padding: 6px;
-            border: solid 2px solid #666;
-            min-height: 15px;
-            max-width: 120px;
-        }
-
-        button {
-            background-color: white;
-            border: #666 2px solid;
-            color: deepskyblue;
-            font-weight: 700;
-            padding: 6px;
-            &:hover {
-                background-color: #666;
-                color: #ddd;
-                cursor: pointer;
-            }
-        }
     }
 }

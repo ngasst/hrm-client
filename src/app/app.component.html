@@ -1,0 +1,44 @@
+<md-toolbar>
+    <div class="logo">
+        <a [routerLink]="['./home']">
+            <img [src]="angularclassLogo">
+        </a>
+    </div>
+    <h2 class="app-title">HRM@Defence Database Schemas</h2>
+    <span class="fill-space"></span>
+    <nav>
+        <span>
+            <a [routerLink]=" ['./'] " md-button color="primary">
+            HOME
+            </a>
+        </span>
+        |
+        <span>
+            <a [routerLink]=" ['./sandbox'] " md-button color="primary">
+            SANDBOX
+            </a>
+        </span>
+        |
+        <span>
+            <a [routerLink]=" ['./detail'] ">
+            Detail
+            </a>
+        </span>
+        |
+        <span>
+            <a [routerLink]=" ['./usage'] " md-button color="primary">
+            USAGE
+            </a>
+        </span>
+    </nav>
+</md-toolbar>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+
+    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
+
+    <footer>
+      
+    </footer>

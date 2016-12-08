@@ -28,7 +28,7 @@ export class TableService {
   }
 
   search(term: SearchObject, options?: any) {
-      let url: string = `/api/search`;
+      let url: string = `http://localhost:4000/api/search`;
       return this._http.post(url, term)
         .map( res => res.json())
         //.do(r => console.log(r))

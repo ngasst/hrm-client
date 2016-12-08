@@ -8,7 +8,7 @@ import { DataResolver } from './app.resolver';
 
 export const ROUTES: Routes = [
   { path: '',      component: SandboxComponent },
-  { path: 'home',  component: SandboxComponent },
+  { path: 'sandbox',  component: SandboxComponent },
   { path: 'usage', component: UsageComponent },
   /*{
     path: 'detail', loadChildren: () => System.import('./+detail')

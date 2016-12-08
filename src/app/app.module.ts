@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+import { MaterialModule } from '@angular/material';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -14,7 +15,8 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { SandboxComponent, SandboxModule } from './sandbox';
+import { SandboxModule, SandboxComponent } from './sandbox';
+import { TablesComponent, TableHighlightDirective, FieldHighlightDirective } from './sandbox/table';
 import { UsageComponent } from './usage';
 import { NoContentComponent } from './no-content';
 
@@ -37,16 +39,20 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   imports: [ // import Angular's modules
     BrowserModule,
-    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
-    SandboxModule
+    SandboxModule,
+    ReactiveFormsModule,
+    MaterialModule.forRoot()
   ],
   declarations: [
     AppComponent,
     UsageComponent,
+    NoContentComponent,
     SandboxComponent,
-    NoContentComponent
+    TablesComponent,
+    FieldHighlightDirective,
+    TableHighlightDirective
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

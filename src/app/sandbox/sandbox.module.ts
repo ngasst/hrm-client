@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SandboxComponent } from './sandbox.component';
 import { TablesComponent, TablesModule } from './table';
 import { SandboxRoutingModule } from './sandbox-routing.module';
+import { TableService } from './table/tables.service';
 
 @NgModule({
   imports: [
@@ -10,6 +11,8 @@ import { SandboxRoutingModule } from './sandbox-routing.module';
     TablesModule
   ],
   declarations: [
-  ]
+    
+  ],
+  providers: [TableService]
 })
 export class SandboxModule { }
