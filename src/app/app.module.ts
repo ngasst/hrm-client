@@ -2,7 +2,6 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, PreloadAllModules } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { MaterialModule } from '@angular/material';
 
@@ -10,19 +9,23 @@ import { MaterialModule } from '@angular/material';
  * Platform and Environment providers/directives/pipes
  */
 import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { SandboxModule, SandboxComponent } from './sandbox';
 import { TablesComponent, TableHighlightDirective, FieldHighlightDirective } from './sandbox/table';
+import { TableSearcherComponent } from './sandbox/table-searcher/table-searcher.component';
 import { UsageComponent } from './usage';
 import { NoContentComponent } from './no-content';
+import { ApiService } from './services';
+
+import { APP_IMPORTS } from './app.imports';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
+  ApiService,
   AppState
 ];
 
@@ -38,12 +41,7 @@ type StoreType = {
 @NgModule({
   bootstrap: [ AppComponent ],
   imports: [ // import Angular's modules
-    BrowserModule,
-    HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
-    SandboxModule,
-    ReactiveFormsModule,
-    MaterialModule.forRoot()
+    APP_IMPORTS
   ],
   declarations: [
     AppComponent,
@@ -51,6 +49,7 @@ type StoreType = {
     NoContentComponent,
     SandboxComponent,
     TablesComponent,
+    TableSearcherComponent,
     FieldHighlightDirective,
     TableHighlightDirective
   ],

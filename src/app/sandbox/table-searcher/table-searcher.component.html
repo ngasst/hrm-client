@@ -1,0 +1,20 @@
+<div class="table-searcher">
+    <div class="search-container">
+        <form [formGroup]="form">
+            <div class="search-table-name">
+                <md-input placeholder="Search By Table Name" value="Type Table Name" formControlName="tn"></md-input>
+            </div>
+            <div class="search-field-name">
+                <md-input placeholder="Search By Field Name" formControlName="fn"></md-input>
+            </div>
+            <div class="filter">
+                <md-radio-group formControlName="sorta">
+                    <md-radio-button selected="true" value="true">Alphabetic Order</md-radio-button>
+                    <md-radio-button value="false">Most Rows First</md-radio-button>
+                </md-radio-group>
+                <md-checkbox formControlName="empty">Empty Tables</md-checkbox>
+            </div>
+            <button #send md-raised-button color="primary" (click)="execute()">FILTER</button>
+        </form>
+    </div>
+</div>

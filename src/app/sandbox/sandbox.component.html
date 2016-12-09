@@ -1,28 +1,10 @@
 <div class="home">
   <h4>Sandbox Tables <small>(displaying {{data?.length}} tables)</small></h4>
-  <div class="search-container">
-    <div class="search-table-name">
-      <md-input placeholder="Search By Table Name" value="Type Table Name" [formControl]="tn" (keyup)="entn.next($event)"></md-input>
-    </div>
-    <div class="search-field-name">
-      <md-input placeholder="Search By Field Name" [formControl]="fn" (keyup)="enfn.next($event)"></md-input>
-    </div>
-    <div class="filter">
-        <md-radio-group (change)="sort.next($event.value === 'true' ? true : false)">
-          <md-radio-button selected value="true">Alphabetic Order</md-radio-button>
-          <md-radio-button value="false">Most Rows First</md-radio-button>
-        </md-radio-group>
-        <!--<input type="radio" [formControl]="sort" value="true" [checked]="sort.value === true"> <label>Alphabetic Order</label>
-        <input type="radio" [formControl]="sort" value="false" [checked]="sort.value === false"> <label>Most Rows</label>-->
-        <md-checkbox [checked]="empty.value === true" value="true" [formControl]="empty">Empty Tables</md-checkbox>
-    </div>
-    <button #send md-raised-button color="primary">FILTER</button>
-  </div>
+  <table-searcher (search)="filter($event)"></table-searcher>
   <div class="tables-container">
     <div class="tables-header"></div>
     <div class="tables-body">
-      <tables [data]="data" [highf]="highf" [hight]="hight"></tables>
+      <!--<tables [data]="data" [highf]="highf" [hight]="hight"></tables>-->
     </div>
   </div>
-
 </div>

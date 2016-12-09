@@ -11,7 +11,6 @@ import { TableService } from './table/tables.service';
     TablesModule
   ],
   declarations: [
-    
   ],
   providers: [TableService]
 })

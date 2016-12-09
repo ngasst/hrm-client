@@ -1,13 +1,17 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { TableService, SearchObject } from './table';
-import { FormControl, CheckboxControlValueAccessor, RadioControlValueAccessor } from '@angular/forms';
+import { TableService } from './table';
 import { Observable, Subject } from 'rxjs/Rx';
-import { MdButton } from '@angular/material';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/combineLatest';
+import 'rxjs/add/operator/take';
+
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../reducers';
+import * as tables from '../actions/tables';
+import { Table, SearchObject } from '../models';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
@@ -16,28 +20,22 @@ import 'rxjs/add/operator/combineLatest';
   styleUrls: [ './sandbox.component.scss' ],
   templateUrl: './sandbox.component.html'
 })
-export class SandboxComponent implements OnInit {
+export class SandboxComponent {
   data: Observable<any>;
-  tn = new FormControl();
-  fn = new FormControl();
-  sort = new Subject();
-  empty = new FormControl();
-  highf: Observable<string>;
-  hight: Observable<string>;
-  @ViewChild('send') send: any;
-  entn: Subject<any> = new Subject();
-  enfn: Subject<any> = new Subject();
-  constructor(private _ts: TableService) {
-
-    // we need the data synchronously for the client to set the server response
-    // we create another method so we have more control for testing     
+  
+  query$: Observable<SearchObject>;
+  tables$: Observable<Table[]>;
+  constructor(private _ts: TableService, private store: Store<fromRoot.State>) {
+    this.query$ = store.select(fromRoot.getFilterQuery).take(1);
+    this.tables$ = store.select(fromRoot.getFilterResults);
   }
 
-  log(val) {
-    console.log(val);
+  filter(query: SearchObject) {
+    console.log(query);
+    this.store.dispatch(new tables.SearchAction(query));
   }
 
-  ngOnInit() {
+  /*ngOnInit() {
     let filters$: Observable<any> = Observable
         .combineLatest(
             this.tn.valueChanges
@@ -78,12 +76,13 @@ export class SandboxComponent implements OnInit {
           this.highf = so.fname;
           this.hight = so.tname;
         });
+      
         
         this.tn.setValue('');
         this.fn.setValue('');
         this.sort.next(true);
         this.empty.setValue(true);
-  }
+  }*/
 
 
 }
