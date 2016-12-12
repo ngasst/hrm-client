@@ -1,0 +1,1 @@
+export { TablesSearcherComponent } from './tables-searcher.component';

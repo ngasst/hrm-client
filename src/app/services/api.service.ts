@@ -7,12 +7,18 @@ import { SearchObject, Table } from '../models';
 
 @Injectable()
 export class ApiService {
-  private API_PATH: string = 'http://127.0.0.1:4000/api';
+  private API_PATH: string = 'http://dbuwsledt162698:4000/api';
 
   constructor(private http: Http) {}
 
   searchTables(query: SearchObject): Observable<Table[]> {
-    return this.http.post(`${this.API_PATH}/search`, query)
+    let params = Object.assign({}, {
+      sorta: query.sorta,
+      empty: query.showEmpty,
+      tname: query.tname.length < 1 ? 'empty' : query.tname,
+      fname: query.fname.length < 1 ? 'empty' : query.fname
+    })
+    return this.http.get(`${this.API_PATH}/search/${params.tname}/${params.fname}/${params.sorta}/${params.empty}`)
       .map(res => res.json() || []);
   }
 

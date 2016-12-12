@@ -5,13 +5,13 @@ import * as table from '../actions/tables';
 
 export interface State {
   tableNames: string[];
-  entities: { [name: string]: Table };
+  entities: {[name: string]: Table};
   selectedTableName: string | null;
 };
 
 const initialState: State = {
   tableNames: [],
-  entities: {},
+  entities: [],
   selectedTableName: null,
 };
 
@@ -19,17 +19,29 @@ const initialState: State = {
 
 export function reducer(state = initialState, action: table.Actions): State {
   switch (action.type) {
-    case table.ActionTypes.SEARCH_COMPLETE:
-    
-    case table.ActionTypes.LOAD: {
-      const table: any = action.payload;
+    case table.ActionTypes.SEARCH_COMPLETE: {
+      const tables = action.payload;
+      const newTables = tables.filter(t => !state.entities[t.name]);
 
-      if (state.tableNames.indexOf(table.tableNames) > -1) {
-        return state;
-      }
+      const newTableNames = newTables.map(t => t.id);
+      const newTableEntities = newTables.reduce((entities: { [name: string]: Table }, table: Table) => {
+        return Object.assign(entities, {
+          [table.name]: table
+        });
+      }, {});
 
       return {
-        tableNames: [ ...state.tableNames, table.tableNames ],
+        tableNames: [ ...state.tableNames, ...newTableNames ],
+        entities: Object.assign({}, state.entities, newTableEntities),
+        selectedTableName: state.selectedTableName
+      };
+    }
+    
+    case table.ActionTypes.LOAD: {
+      const table: Table = action.payload;
+
+      return {
+        tableNames: [...state.tableNames, table.name],
         entities: Object.assign({}, state.entities, {
           [table.name]: table
         }),

@@ -65,6 +65,7 @@ const reducers = {
   filter: fromFilter.reducer,
   tables: fromTables.reducer,
   router: fromRouter.routerReducer,
+  layout: fromLayout.reducer
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -145,3 +146,7 @@ export const getFilterResults = createSelector(getTableEntities, getFilterTableN
 export const getLayoutState = (state: State) => state.layout;
 
 export const getShowLoadingModal = createSelector(getLayoutState, fromLayout.getShowLoadingModal);
+
+export const getHightlighField = createSelector(getLayoutState, fromLayout.getHField);
+
+export const getHighlightTable = createSelector(getLayoutState, fromLayout.getHTable);

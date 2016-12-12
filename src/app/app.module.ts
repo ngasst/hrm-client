@@ -14,11 +14,11 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { SandboxModule, SandboxComponent } from './sandbox';
-import { TablesComponent, TableHighlightDirective, FieldHighlightDirective } from './sandbox/table';
-import { TableSearcherComponent } from './sandbox/table-searcher/table-searcher.component';
+import { TablesSearcherComponent, TablesViewerComponent, TableHighlightDirective, FieldHighlightDirective } from './shared';
 import { UsageComponent } from './usage';
 import { NoContentComponent } from './no-content';
 import { ApiService } from './services';
+import { LoadingModalComponent } from './shared';
 
 import { APP_IMPORTS } from './app.imports';
 
@@ -41,22 +41,20 @@ type StoreType = {
 @NgModule({
   bootstrap: [ AppComponent ],
   imports: [ // import Angular's modules
-    APP_IMPORTS
+    APP_IMPORTS,
   ],
   declarations: [
     AppComponent,
     UsageComponent,
     NoContentComponent,
     SandboxComponent,
-    TablesComponent,
-    TableSearcherComponent,
-    FieldHighlightDirective,
-    TableHighlightDirective
+    LoadingModalComponent
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS
-  ]
+  ],
+  entryComponents: [LoadingModalComponent]
 })
 export class AppModule {
   constructor(public appRef: ApplicationRef, public appState: AppState) {}

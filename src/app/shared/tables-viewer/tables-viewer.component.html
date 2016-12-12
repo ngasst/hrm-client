@@ -7,13 +7,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr class="tables-list-item" *ngFor="let table of data">
-            <td class="table-name" [hTable]="hight">
+        <tr class="tables-list-item" *ngFor="let table of tables">
+            <td class="table-name" [hTable]="hight"><!--[hTable]="hight"-->
                 {{table.name}}
             </td>
             <td class="table-fields">
                 <ul class="fields-list">
-                    <li class="field-item" *ngFor="let field of table.fields" [hField]="highf">{{field}}</li>
+                    <li class="field-item" *ngFor="let field of table.fields" [hField]="highf">{{field}}</li><!--[hField]="highf"-->
                 </ul>
             </td>
             <td class="row-count">

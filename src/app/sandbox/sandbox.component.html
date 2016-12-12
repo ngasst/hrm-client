@@ -1,9 +1,10 @@
 <div class="home">
   <h4>Sandbox Tables <small>(displaying {{data?.length}} tables)</small></h4>
-  <table-searcher (search)="filter($event)"></table-searcher>
+  <tables-searcher (search)="filter($event)"></tables-searcher>
   <div class="tables-container">
     <div class="tables-header"></div>
     <div class="tables-body">
+      <tables-viewer [tables]="tables$ | async" [highf]="hField$ | async" [hight]="hTable$ | async"></tables-viewer>
       <!--<tables [data]="data" [highf]="highf" [hight]="hight"></tables>-->
     </div>
   </div>

@@ -13,6 +13,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { useLogMonitor } from '@ngrx/store-log-monitor';
 import { reducer } from './reducers';
 import { TablesEffects } from './effects/tables';
+import { SharedModule } from './shared';
 
 export const APP_IMPORTS = [
     CommonModule,
@@ -25,5 +26,6 @@ export const APP_IMPORTS = [
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(TablesEffects),
     SandboxModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
 ]

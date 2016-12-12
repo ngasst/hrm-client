@@ -5,12 +5,12 @@ import { Observable, Subject } from 'rxjs/Rx';
 import { SearchObject } from '../../models';
 
 @Component({
-	selector: 'table-searcher',
-	templateUrl: 'table-searcher.component.html',
-	styleUrls: ['./table-searcher.component.scss']
+	selector: 'tables-searcher',
+	templateUrl: 'tables-searcher.component.html',
+	styleUrls: ['./tables-searcher.component.scss']
 })
 
-export class TableSearcherComponent implements OnInit {
+export class TablesSearcherComponent implements OnInit {
 	form: FormGroup;
 	fb: FormBuilder = new FormBuilder();
 	@Output() search: EventEmitter<any> = new EventEmitter();

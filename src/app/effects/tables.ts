@@ -13,6 +13,7 @@ import { of } from 'rxjs/observable/of';
 
 import { ApiService } from '../services/api.service';
 import * as tables from '../actions/tables';
+import * as layout from '../actions/layout';
 
 
 /**
