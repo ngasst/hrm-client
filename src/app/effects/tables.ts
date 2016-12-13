@@ -46,4 +46,17 @@ export class TablesEffects {
         .map(elements => new tables.SearchCompleteAction(elements))
         .catch(() => of(new tables.SearchCompleteAction([])));
     });
+
+  @Effect()
+    query$: Observable<Action> = this.actions$
+      .ofType(tables.ActionTypes.QUERY)
+      .map((action: tables.QueryAction) => action.payload)
+      .switchMap(query => {
+        const nextQuery$ = this.actions$.ofType(tables.ActionTypes.QUERY).skip(1);
+
+        return this._api.queryTable(query)
+        .takeUntil(nextQuery$)
+        .map(elements => new tables.QueryCompleteAction(elements))
+        .catch(() => of(new tables.QueryCompleteAction({})));
+      });
 }

@@ -1,0 +1,8 @@
+<div class="table-dialog">
+    <div class="spinner" *ngIf="false">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+    <queried-table [table]="table$ | async" [name]="selectedTableName$ | async"></queried-table>
+</div>

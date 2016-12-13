@@ -1,4 +1,4 @@
-import { Component, Inject, ChangeDetectionStrategy, ViewEncapsulation, Input, OnInit } from '@angular/core';
+import { Component, Inject, ChangeDetectionStrategy, ViewEncapsulation, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -8,15 +8,17 @@ import { FormControl } from '@angular/forms';
   templateUrl: './tables-viewer.component.html',
   styleUrls: ['./tables-viewer.component.scss']
 })
-export class TablesViewerComponent implements OnInit {
+export class TablesViewerComponent {
     @Input() tables;
     @Input() highf;
     @Input() hight;
+    @Output() table = new EventEmitter();
+  
   constructor() {
     
   }
 
-  ngOnInit() {
-    console.log(this.tables);
+  selectTable(tableName: string) {
+    this.table.emit(tableName);
   }
 }

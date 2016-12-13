@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { Table } from '../models';
+import { Table, ResultTable } from '../models';
 import * as table from '../actions/tables';
 
 
@@ -7,12 +7,14 @@ export interface State {
   tableNames: string[];
   entities: {[name: string]: Table};
   selectedTableName: string | null;
+  queriedTable: ResultTable | {};
 };
 
 const initialState: State = {
   tableNames: [],
   entities: [],
   selectedTableName: null,
+  queriedTable: {}
 };
 
 
@@ -33,7 +35,19 @@ export function reducer(state = initialState, action: table.Actions): State {
       return {
         tableNames: [ ...state.tableNames, ...newTableNames ],
         entities: Object.assign({}, state.entities, newTableEntities),
-        selectedTableName: state.selectedTableName
+        selectedTableName: state.selectedTableName,
+        queriedTable: state.queriedTable
+      };
+    }
+
+    case table.ActionTypes.QUERY_COMPLETE: {
+      const qt = action.payload;
+
+      return {
+        tableNames: [ ...state.tableNames, ...newTableNames ],
+        entities: state.entities,
+        selectedTableName: state.selectedTableName,
+        queriedTable: qt
       };
     }
     
@@ -45,15 +59,18 @@ export function reducer(state = initialState, action: table.Actions): State {
         entities: Object.assign({}, state.entities, {
           [table.name]: table
         }),
-        selectedTableName: state.selectedTableName
+        selectedTableName: state.selectedTableName,
+        queriedTable: state.queriedTable
       };
     }
+
 
     case table.ActionTypes.SELECT: {
       return {
         tableNames: state.tableNames,
         entities: state.entities,
-        selectedTableName: action.payload
+        selectedTableName: action.payload,
+        queriedTable: state.queriedTable
       };
     }
 
@@ -73,6 +90,8 @@ export function reducer(state = initialState, action: table.Actions): State {
  */
 
 export const getEntities = (state: State) => state.entities;
+
+export const getQueriedTable = (state: State) => state.queriedTable;
 
 export const getTableNames = (state: State) => state.tableNames;
 

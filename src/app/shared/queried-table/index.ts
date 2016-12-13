@@ -1,0 +1,1 @@
+export { QueriedTableComponent } from './queried-table.component';

@@ -2,7 +2,7 @@ import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { SearchObject, Table } from '../models';
+import { SearchObject, Table, ResultTable } from '../models';
 
 
 @Injectable()
@@ -22,8 +22,8 @@ export class ApiService {
       .map(res => res.json() || []);
   }
 
-  retrieveTableData(tableName: string): Observable<Table> {
-    return this.http.get(`${this.API_PATH}/query/${tableName}`)
-      .map(res => res.json());
+  queryTable(tableName: string): Observable<ResultTable> {
+    return this.http.get(`${this.API_PATH}/query-table/${tableName}`)
+      .map(res => res.json() || {});
   }
 }

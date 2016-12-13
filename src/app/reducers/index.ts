@@ -117,6 +117,7 @@ export const getTablesState = (state: State) => state.tables;
  export const getTableNames = createSelector(getTablesState, fromTables.getTableNames);
  export const getSelectedTableName = createSelector(getTablesState, fromTables.getSelectedTableName);
  export const getSelectedTables = createSelector(getTablesState, fromTables.getSelected);
+ export const getQueriedTable = createSelector(getTablesState, fromTables.getQueriedTable);
 
 
 /**
@@ -147,6 +148,6 @@ export const getLayoutState = (state: State) => state.layout;
 
 export const getShowLoadingModal = createSelector(getLayoutState, fromLayout.getShowLoadingModal);
 
-export const getHightlighField = createSelector(getLayoutState, fromLayout.getHField);
+export const getHighlightField = createSelector(getLayoutState, fromLayout.getHField);
 
 export const getHighlightTable = createSelector(getLayoutState, fromLayout.getHTable);

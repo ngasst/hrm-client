@@ -1,0 +1,16 @@
+<div class="queried-table">
+    <h2>First 10 Rows for Table <strong>{{name}}</strong> <small>({{table.columnCount}} columns)</small></h2>
+    <table>
+        <thead>
+            <tr>
+                <td *ngFor="let column of table.columnNames">{{column}}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of table.rows">
+                <td *ngFor="let column of table.columnNames">{{row[column]}}</td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</div>

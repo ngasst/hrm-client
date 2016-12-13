@@ -1,11 +1,13 @@
 import { Action } from '@ngrx/store';
-import { Table } from '../models/table';
+import { Table, ResultTable } from '../models/table';
 import { type } from '../util';
 import { SearchObject } from '../models';
 
 export const ActionTypes = {
     SEARCH: type('[Table] Search'),
     SEARCH_COMPLETE: type('[Table] Search Complete'),
+    QUERY: type('[Table] Query'),
+    QUERY_COMPLETE: type('[Table] Query Complete'),
     LOAD: type('[Table] Load'),
     SELECT: type('[Table] Select')
 };
@@ -24,6 +26,20 @@ export class SearchCompleteAction implements Action {
   constructor(public payload: Table[]) { }
 }
 
+export class QueryAction implements Action {
+    type = ActionTypes.QUERY;
+
+    constructor(public payload: string) {
+        //
+    }
+}
+
+export class QueryCompleteAction implements Action {
+  type = ActionTypes.QUERY_COMPLETE;
+
+  constructor(public payload: ResultTable) { }
+}
+
 export class LoadAction implements Action {
   type = ActionTypes.LOAD;
 
@@ -40,4 +56,6 @@ export type Actions
   = SearchAction
   | SearchCompleteAction
   | LoadAction
-  | SelectAction;
+  | SelectAction
+  | QueryAction
+  | QueryCompleteAction;

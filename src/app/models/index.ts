@@ -1,2 +1,2 @@
 export { SearchObject } from './search-object';
-export { Table } from './table';
+export { Table, ResultTable } from './table';

@@ -8,7 +8,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/take';
-import { LoadingModalComponent } from '../shared';
+import { LoadingModalComponent, TableDialogComponent } from '../shared';
 
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../reducers';
@@ -30,10 +30,11 @@ export class SandboxComponent {
   hTable$: Observable<string>;
 
   dialogRef: MdDialogRef<LoadingModalComponent>;
+  tbDialogRef: MdDialogRef<TableDialogComponent>;
   constructor(private store: Store<fromRoot.State>, private dialog: MdDialog) {
     this.query$ = store.select(fromRoot.getFilterQuery).take(1);
     this.tables$ = store.select(fromRoot.getFilterResults);
-    this.hField$ = store.select(fromRoot.getHightlighField);
+    this.hField$ = store.select(fromRoot.getHighlightField);
     this.hTable$ = store.select(fromRoot.getHighlightTable);
   }
 
@@ -44,12 +45,26 @@ export class SandboxComponent {
     this.store.dispatch(new layout.HighlightTable(query.tname));
   }
 
+  showSelectedTable(tableName) {
+    let tableDialogOptions: MdDialogConfig = {
+      //disableClose: true,
+      width: '80%',
+      height: '80%'
+        //position: {top: '0', bottom: '0', left: '0', right: '0'}
+      };
+    this.store.dispatch(new tables.SelectAction(tableName));
+    this.store.dispatch(new tables.QueryAction(tableName));
+    this.tbDialogRef = this.dialog.open(TableDialogComponent, tableDialogOptions);
+  }
+
   ngOnInit() {
     this.store.select(fromRoot.getFilterLoading).subscribe(s => {
       console.log(s);
       let dialogOptions: MdDialogConfig = {
         disableClose: true,
-        position: {top: '0', bottom: '0', left: '0', right: '0'}
+        width: '50%',
+        height: '50%'
+        //position: {top: '0', bottom: '0', left: '0', right: '0'}
       }
       if (!s && typeof this.dialogRef !== ('undefined' || null)) {
         this.dialogRef.close();

@@ -18,7 +18,7 @@ import { TablesSearcherComponent, TablesViewerComponent, TableHighlightDirective
 import { UsageComponent } from './usage';
 import { NoContentComponent } from './no-content';
 import { ApiService } from './services';
-import { LoadingModalComponent } from './shared';
+import { LoadingModalComponent, TableDialogComponent } from './shared';
 
 import { APP_IMPORTS } from './app.imports';
 
@@ -48,13 +48,14 @@ type StoreType = {
     UsageComponent,
     NoContentComponent,
     SandboxComponent,
-    LoadingModalComponent
+    LoadingModalComponent,
+    TableDialogComponent
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS
   ],
-  entryComponents: [LoadingModalComponent]
+  entryComponents: [LoadingModalComponent, TableDialogComponent]
 })
 export class AppModule {
   constructor(public appRef: ApplicationRef, public appState: AppState) {}
