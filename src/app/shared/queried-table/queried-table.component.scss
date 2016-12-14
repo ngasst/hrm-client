@@ -1,3 +1,54 @@
 .queried-table {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 20px;
+    width: 95%;
+    table {
+        flex: 1 1 auto;
+        border: medium solid lightsteelblue;
+        border-spacing: 0;
+        thead {
+            tr {
+                //border-bottom: medium lightsteelblue solid;
+                background-color: lightsteelblue;
+                td {
+                    margin: 0;
+                    border: thin lightsteelblue solid;
+                    padding: 4px;
+                    color: white;
+                    font-weight: bold;
+                }
+            }
+        }
 
+        tbody {
+            tr {
+                td {
+                    border-bottom: thin dashed lightsteelblue;
+                    padding: 5px;
+                }
+
+                &:last-child {
+                    td {
+                        border-bottom: none;
+                        margin: 0;
+                    }
+                }
+
+                &:nth-child(even) {
+                    background-color: darken(white, 5%);
+                }
+
+                &::nth-child(odd) {
+                    background-color: darken(white, 7.5%);
+                }
+            }
+        }
+
+        tfoot{
+
+        }
+    }
 }

@@ -1,0 +1,48 @@
+.usage {
+    margin: 0 20px;
+
+    h2 {
+        font-size: 2.2em;
+        color: #777;
+    }
+
+    ol {
+        list-style: none;
+    }
+
+    ol > li {
+        counter-increment: item;
+        margin-bottom: 5px;
+
+        &:before {
+            margin-right: 10px;
+            padding-top:1em;
+            content: counter(item);
+            background: lightsteelblue;
+            border-radius: 100%;
+            color: white;
+            width: 3em;
+            height: 2em;
+            text-align: center;
+            display: inline-block;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+            display: inline;
+        }
+    }
+
+    ol > li > ul {
+        //background: green;
+        margin: 10px 40px;
+
+        li {
+            margin: 5px 0;
+
+            p {
+                color: #888;
+            }
+        }
+    }
+}

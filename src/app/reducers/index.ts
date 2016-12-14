@@ -147,7 +147,3 @@ export const getFilterResults = createSelector(getTableEntities, getFilterTableN
 export const getLayoutState = (state: State) => state.layout;
 
 export const getShowLoadingModal = createSelector(getLayoutState, fromLayout.getShowLoadingModal);
-
-export const getHighlightField = createSelector(getLayoutState, fromLayout.getHField);
-
-export const getHighlightTable = createSelector(getLayoutState, fromLayout.getHTable);

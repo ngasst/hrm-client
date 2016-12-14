@@ -1,6 +1,7 @@
 export interface SearchObject {
     tname: string;
     fname: string;
-    empty: boolean;
+    empty?: boolean;
     sorta: boolean;
+    showEmpty?:boolean;
 }

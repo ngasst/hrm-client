@@ -4,7 +4,7 @@
             <img [src]="angularclassLogo">
         </a>
     </div>
-    <h2 class="app-title">HRM@Defence Database Schemas</h2>
+    <h2 class="app-title">HRM@Defence Dbs</h2>
     <span class="fill-space"></span>
     <nav>
         <span>
@@ -20,8 +20,8 @@
         </span>
         |
         <span>
-            <a [routerLink]=" ['./detail'] ">
-            Detail
+            <a [routerLink]=" ['./ack-builder'] " md-button color="primary">
+            ADMIN CHECK BUILDER
             </a>
         </span>
         |
@@ -33,12 +33,10 @@
     </nav>
 </md-toolbar>
 
-    <main>
-      <router-outlet></router-outlet>
-    </main>
+<main>
+    <router-outlet></router-outlet>
+</main>
 
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-    <footer>
-      
-    </footer>
+<footer>
+    
+</footer>

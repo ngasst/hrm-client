@@ -13,7 +13,7 @@ import { ResultTable } from '../../models';
 })
 
 export class TableDialogComponent implements OnInit {
-	table$: Observable<ResultTable>;
+	table$: Observable<any>;
 	selectedTableName$: Observable<String>;
 	constructor(public dialogRef: MdDialogRef<TableDialogComponent>, private store: Store<fromRoot.State>) {
 

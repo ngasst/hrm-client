@@ -12,7 +12,7 @@ export interface State {
 
 const initialState: State = {
   tableNames: [],
-  entities: [],
+  entities: {},
   selectedTableName: null,
   queriedTable: {}
 };
@@ -44,7 +44,7 @@ export function reducer(state = initialState, action: table.Actions): State {
       const qt = action.payload;
 
       return {
-        tableNames: [ ...state.tableNames, ...newTableNames ],
+        tableNames: state.tableNames,
         entities: state.entities,
         selectedTableName: state.selectedTableName,
         queriedTable: qt

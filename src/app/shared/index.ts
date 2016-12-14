@@ -4,3 +4,4 @@ export * from './tables-searcher';
 export * from './queried-table';
 export { LoadingModalComponent } from './loading-modal/loading-modal.component';
 export { TableDialogComponent } from './table-dialog/table-dialog.component';
+export { HighlightDirective } from './highlight.directive';

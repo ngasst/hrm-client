@@ -9,10 +9,10 @@
             </div>
             <div class="filter">
                 <md-radio-group formControlName="sorta">
-                    <md-radio-button selected="true" value="true">Alphabetic Order</md-radio-button>
-                    <md-radio-button value="false">Most Rows First</md-radio-button>
+                    <md-radio-button checked="true" value="true" align="end">Alphabetic Order</md-radio-button>
+                    <md-radio-button value="false" align="end">Most Rows First</md-radio-button>
                 </md-radio-group>
-                <md-checkbox formControlName="empty">Empty Tables</md-checkbox>
+                <md-checkbox formControlName="empty" [checked]="false" align="end">Empty Tables</md-checkbox>
             </div>
             <button #send md-raised-button color="primary" (click)="execute()">FILTER</button>
         </form>

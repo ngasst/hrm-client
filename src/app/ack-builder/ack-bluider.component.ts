@@ -3,11 +3,11 @@ import { Component, Inject, ChangeDetectionStrategy, ViewEncapsulation } from '@
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.Emulated,
-  selector: 'usage',
-  templateUrl: './usage.component.html',
-  styleUrls: ['./usage.component.scss']
+  selector: 'ack-builder',
+  templateUrl: './ack-builder.component.html',
+  styleUrls: ['./ack-builder.component.scss']
 })
-export class UsageComponent {
+export class AckBuilderComponent {
   constructor() {
     // console.log('req',  req)
 

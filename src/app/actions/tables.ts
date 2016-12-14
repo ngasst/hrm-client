@@ -37,13 +37,13 @@ export class QueryAction implements Action {
 export class QueryCompleteAction implements Action {
   type = ActionTypes.QUERY_COMPLETE;
 
-  constructor(public payload: ResultTable) { }
+  constructor(public payload: ResultTable | any) { }
 }
 
 export class LoadAction implements Action {
   type = ActionTypes.LOAD;
 
-  constructor(public payload: Table) { }
+  constructor(public payload: Table ) { }
 }
 
 export class SelectAction implements Action {

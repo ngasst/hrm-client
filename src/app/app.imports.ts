@@ -14,6 +14,7 @@ import { useLogMonitor } from '@ngrx/store-log-monitor';
 import { reducer } from './reducers';
 import { TablesEffects } from './effects/tables';
 import { SharedModule } from './shared';
+import { AckBuilderModule } from './ack-builder';
 
 export const APP_IMPORTS = [
     CommonModule,
@@ -27,5 +28,6 @@ export const APP_IMPORTS = [
     EffectsModule.run(TablesEffects),
     SandboxModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    AckBuilderModule
 ]

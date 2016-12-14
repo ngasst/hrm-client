@@ -26,23 +26,17 @@ import { Table, SearchObject } from '../models';
 export class SandboxComponent {  
   query$: Observable<SearchObject>;
   tables$: Observable<Table[]>;
-  hField$: Observable<string>;
-  hTable$: Observable<string>;
 
   dialogRef: MdDialogRef<LoadingModalComponent>;
   tbDialogRef: MdDialogRef<TableDialogComponent>;
   constructor(private store: Store<fromRoot.State>, private dialog: MdDialog) {
     this.query$ = store.select(fromRoot.getFilterQuery).take(1);
     this.tables$ = store.select(fromRoot.getFilterResults);
-    this.hField$ = store.select(fromRoot.getHighlightField);
-    this.hTable$ = store.select(fromRoot.getHighlightTable);
   }
 
   filter(query: SearchObject) {
     this.store.dispatch(new layout.ShowLoadingModal());
     this.store.dispatch(new tables.SearchAction(query));
-    this.store.dispatch(new layout.HighlightField(query.fname));
-    this.store.dispatch(new layout.HighlightTable(query.tname));
   }
 
   showSelectedTable(tableName) {

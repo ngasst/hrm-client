@@ -4,7 +4,7 @@
   <div class="tables-container">
     <div class="tables-header"></div>
     <div class="tables-body">
-      <tables-viewer [tables]="tables$ | async" [highf]="hField$ | async" [hight]="hTable$ | async" (table)="showSelectedTable($event)"></tables-viewer>
+      <tables-viewer [tables]="tables$ | async" (table)="showSelectedTable($event)"></tables-viewer>
       <!--<tables [data]="data" [highf]="highf" [hight]="hight"></tables>-->
     </div>
   </div>
